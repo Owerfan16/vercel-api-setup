@@ -1,4 +1,17 @@
 {
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/amo.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/amo",
+      "dest": "/api/amo.js"
+    }
+  ],
   "headers": [
     {
       "source": "/api/(.*)",
