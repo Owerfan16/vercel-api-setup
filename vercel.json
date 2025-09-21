@@ -6,12 +6,6 @@
       "use": "@vercel/node"
     }
   ],
-  "routes": [
-    {
-      "src": "/api/amo",
-      "dest": "/api/amo.js"
-    }
-  ],
   "headers": [
     {
       "source": "/api/(.*)",
