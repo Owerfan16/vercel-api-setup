@@ -1,15 +1,15 @@
 export default async function handler(req, res) {
+  console.log(`API called: ${req.method} ${req.url}`);
+
   // Устанавливаем CORS заголовки
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://dubai-property-helper.ru"
-  );
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Allow-Credentials", "false");
 
   // Обработка preflight запросов
   if (req.method === "OPTIONS") {
+    console.log("Handling OPTIONS preflight request");
     res.status(200).end();
     return;
   }
