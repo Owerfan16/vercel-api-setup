@@ -1,6 +1,6 @@
 export default function handler(req, res) {
   console.log(`API called: ${req.method} ${req.url}`);
-  
+
   // Устанавливаем CORS заголовки
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
@@ -30,7 +30,7 @@ export default function handler(req, res) {
 
     // Сначала проверим доступность полей
     console.log("🔍 Проверяем доступность полей...");
-    
+
     // Формируем данные для amoCRM
     const noteText = `
       Новая заявка с сайта:
@@ -53,7 +53,10 @@ export default function handler(req, res) {
       },
     ];
 
-    console.log("Отправляем данные в amoCRM:", JSON.stringify(leadData, null, 2));
+    console.log(
+      "Отправляем данные в amoCRM:",
+      JSON.stringify(leadData, null, 2)
+    );
 
     // Для тестирования просто возвращаем успех
     res.status(200).json({
