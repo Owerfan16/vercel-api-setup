@@ -226,4 +226,4 @@ module.exports = async function handler(req, res) {
       error: error.message,
     });
   }
-}
+};
