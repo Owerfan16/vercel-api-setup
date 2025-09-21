@@ -1,7 +1,6 @@
 {
   "name": "dubai-api",
   "version": "1.0.0",
-  "type": "module",
   "description": "API for Dubai Property Helper",
   "main": "api/amo.js",
   "scripts": {

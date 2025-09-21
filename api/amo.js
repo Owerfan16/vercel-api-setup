@@ -1,4 +1,4 @@
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   console.log(`API called: ${req.method} ${req.url}`);
 
   // Устанавливаем CORS заголовки
