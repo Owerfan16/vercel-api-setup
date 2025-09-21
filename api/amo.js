@@ -1,30 +1,19 @@
-const cors = require("cors");
-
-// Настройка CORS
-const corsOptions = {
-  origin: ["https://dubai-property-helper.ru", "http://localhost:3000"],
-  methods: ["GET", "POST", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
-};
-
-// Middleware для CORS
-const corsMiddleware = cors(corsOptions);
-
 export default async function handler(req, res) {
+  // Устанавливаем CORS заголовки
+  res.setHeader('Access-Control-Allow-Origin', 'https://dubai-property-helper.ru');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+
   // Обработка preflight запросов
   if (req.method === "OPTIONS") {
-    corsMiddleware(req, res, () => {
-      res.status(200).end();
-    });
+    res.status(200).end();
     return;
   }
 
-  // Применяем CORS ко всем запросам
-  corsMiddleware(req, res, async () => {
-    if (req.method !== "POST") {
-      return res.status(405).json({ error: "Method not allowed" });
-    }
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
 
     try {
       const body = req.body;
@@ -234,5 +223,4 @@ export default async function handler(req, res) {
         error: error.message,
       });
     }
-  });
 }
